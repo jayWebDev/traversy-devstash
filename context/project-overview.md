@@ -291,6 +291,10 @@ Item Content → API Route → OpenAI gpt-5-nano → Suggestions (Tags / Summary
 - Touch-optimized icons and buttons
 - Adaptive grid columns based on viewport width
 
+### Screenshots
+- @context/screenshots/dashboard-ui-main.png
+- @context/screenshots/dashboard-ui-drawer.png
+
 ---
 
 ## 🗂️ Development Workflow
