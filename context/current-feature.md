@@ -1,24 +1,22 @@
 # Current Feature
 
-Dashboard UI Phase 1 - Initial dashboard layout with top bar, sidebar placeholder, and main area placeholder.
+Dashboard UI Phase 3 - Main content area with recent collections, pinned items, recent items, and stats cards.
 
 ## Status
 
-Completed
+In Progress
 
 ## Goals
 
-- ShadCN UI initialization and components
-- ShadCN component installation
-- Dashboard route at /dashboard
-- Main dashboard layout and any global styles
-- Dark mode by default
-- Top bar with search and new item button (display only)
-- Placeholder for sidebar and main area. Just add an h2 with "Sidebar" and "Main" for now.
+- Main area to the right of the sidebar
+- Recent collections section
+- Pinned items section
+- 10 recent items
+- 4 stats cards at the top for number of items, collections, favorite items and favorite collections
 
 ## Notes
 
-Phase 1 of 3 for the dashboard UI layout. See @context/features/dashboard-phase-1-spec.md for full spec.
+Phase 3 of 3 for the dashboard UI layout. See @context/features/dashboard-phase-3-spec.md for full spec.
 
 ## History
 

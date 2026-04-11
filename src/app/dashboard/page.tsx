@@ -1,15 +1,24 @@
+import { StatsCards } from "@/components/dashboard/stats-cards";
+import { CollectionsGrid } from "@/components/dashboard/collections-grid";
+import { PinnedItems } from "@/components/dashboard/pinned-items";
+import { RecentItems } from "@/components/dashboard/recent-items";
+
 export default function DashboardPage() {
   return (
-    <>
-      {/* Sidebar */}
-      <aside className="flex w-56 flex-col border-r border-border p-4">
-        <h2 className="text-lg font-semibold">Sidebar</h2>
-      </aside>
+    <main className="flex-1 overflow-y-auto p-6">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <p className="text-sm text-muted-foreground">
+          Your developer knowledge hub
+        </p>
+      </div>
 
-      {/* Main */}
-      <main className="flex-1 overflow-y-auto p-6">
-        <h2 className="text-lg font-semibold">Main</h2>
-      </main>
-    </>
+      <div className="space-y-8">
+        <StatsCards />
+        <CollectionsGrid />
+        <PinnedItems />
+        <RecentItems />
+      </div>
+    </main>
   );
 }
