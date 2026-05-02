@@ -1,25 +1,25 @@
 # Current Feature
 
-Dashboard Collections - Replace dummy collection data in the dashboard main area with real data from the Neon database via Prisma. Keep the existing 6-card recent collections layout, but source from the DB instead of `src/lib/mock-data.ts`. Items underneath are out of scope for this pass.
+Dashboard Items - Replace dummy item data in the dashboard main area (pinned and recent items lists) with real data from the Neon database via Prisma. Preserve the existing layout and design; only swap the data source from `src/lib/mock-data.ts` to the DB.
 
 ## Status
 
-In Progress
+Completed
 
 ## Goals
 
-- Create `src/lib/db/collections.ts` with data fetching functions
-- Fetch collections directly in the server component (no client fetching)
-- Derive collection card border color from the most-used content type in that collection
-- Show small icons of all item types present in each collection
-- Preserve current design (reference `context/screenshots/dashboard-ui-main.png` if needed)
-- Update collection stats display
+- Create `src/lib/db/items.ts` with data fetching functions
+- Fetch items directly in server components (no client fetching)
+- Derive item card icon/border color from the item's type
+- Display item type tags and the metadata currently shown on each card
+- Hide the pinned items section entirely when there are no pinned items
+- Update item stats display
 
 ## Notes
 
-See @context/features/dashboard-collections-spec.md for full spec.
+See @context/features/dashboard-items-spec.md for full spec.
 
-Do not add per-collection items underneath the cards yet — that's a later phase.
+Reference `context/screenshots/dashboard-ui-main.png` for layout if needed.
 
 ## History
 
@@ -30,3 +30,5 @@ Do not add per-collection items underneath the cards yet — that's a later phas
 - 2026-04-10: Dashboard Phase 3 - Main content area with 4 stats cards, collections grid, pinned items list, and recent items list using mock data
 - 2026-04-24: Prisma 7 + Neon Postgres setup - new `prisma-client` generator outputting to `src/generated/prisma`, `prisma.config.ts` with PrismaPg adapter, schema with app models + NextAuth (Account/Session/VerificationToken), cascade deletes and indexes, ESM enabled (`type: module`), `db:*` npm scripts, `src/lib/prisma.ts` singleton
 - 2026-04-30: Database seed - `prisma/seed.ts` with bcryptjs-hashed demo user, 7 system item types, and 5 collections totaling 18 items; idempotent via upsert; wired through `prisma.config.ts` `migrations.seed` and `npm run db:seed`
+- 2026-05-01: Dashboard Collections - `src/lib/db/collections.ts` with `getRecentCollections()`; `CollectionsGrid` converted to async server component; per-card accent color and icon row derived from most-used item type
+- 2026-05-01: Dashboard Items - `src/lib/db/items.ts` (pinned + recent) and `src/lib/db/stats.ts`; `PinnedItems`, `RecentItems`, and `StatsCards` converted to async server components; shared `ItemRow` with type-colored accent and `TypeIcon` switch component; pinned section hides when empty
