@@ -1,29 +1,25 @@
 # Current Feature
 
-Database Seed Data - Create a Prisma seed script to populate the dev database with a demo user, system item types, and sample collections/items for development and demos.
+Dashboard Collections - Replace dummy collection data in the dashboard main area with real data from the Neon database via Prisma. Keep the existing 6-card recent collections layout, but source from the DB instead of `src/lib/mock-data.ts`. Items underneath are out of scope for this pass.
 
 ## Status
 
-Completed
+In Progress
 
 ## Goals
 
-- Create `prisma/seed.ts` runnable via `prisma db seed`
-- Seed a demo user (demo@devstash.io / "Demo User", password hashed with bcryptjs @ 12 rounds, `isPro: false`, `emailVerified: now`)
-- Seed 7 system item types (snippet, prompt, command, note, file, image, link) with Lucide icon names and brand colors, all `isSystem: true`
-- Seed 5 collections with associated items:
-  - **React Patterns** — 3 TypeScript snippets (custom hooks, component patterns, utilities)
-  - **AI Workflows** — 3 prompts (code review, doc generation, refactoring)
-  - **DevOps** — 1 snippet, 1 command, 2 links (real URLs)
-  - **Terminal Commands** — 4 commands (git, docker, process mgmt, package managers)
-  - **Design Resources** — 4 links (real URLs: CSS/Tailwind, component libs, design systems, icon libs)
-- Make the script idempotent (safe to re-run)
+- Create `src/lib/db/collections.ts` with data fetching functions
+- Fetch collections directly in the server component (no client fetching)
+- Derive collection card border color from the most-used content type in that collection
+- Show small icons of all item types present in each collection
+- Preserve current design (reference `context/screenshots/dashboard-ui-main.png` if needed)
+- Update collection stats display
 
 ## Notes
 
-See @context/features/seed-spec.md for full spec.
+See @context/features/dashboard-collections-spec.md for full spec.
 
-bcryptjs for password hashing. Use `upsert` / deterministic IDs where possible so re-running the seed doesn't duplicate data.
+Do not add per-collection items underneath the cards yet — that's a later phase.
 
 ## History
 
