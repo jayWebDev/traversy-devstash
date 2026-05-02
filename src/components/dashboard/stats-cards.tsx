@@ -1,46 +1,42 @@
-import {
-  LayoutGrid,
-  FolderOpen,
-  Star,
-  FolderHeart,
-} from "lucide-react";
+import { LayoutGrid, FolderOpen, Star, FolderHeart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { items, collections } from "@/lib/mock-data";
+import { getDashboardStats } from "@/lib/db/stats";
 
-const stats = [
-  {
-    label: "Total Items",
-    value: items.length,
-    icon: LayoutGrid,
-    color: "text-blue-500",
-  },
-  {
-    label: "Collections",
-    value: collections.length,
-    icon: FolderOpen,
-    color: "text-emerald-500",
-  },
-  {
-    label: "Favorite Items",
-    value: items.filter((i) => i.isFavorite).length,
-    icon: Star,
-    color: "text-yellow-500",
-  },
-  {
-    label: "Favorite Collections",
-    value: collections.filter((c) => c.isFavorite).length,
-    icon: FolderHeart,
-    color: "text-pink-500",
-  },
-];
+export async function StatsCards() {
+  const stats = await getDashboardStats();
+  const cards = [
+    {
+      label: "Total Items",
+      value: stats.totalItems,
+      icon: LayoutGrid,
+      color: "text-blue-500",
+    },
+    {
+      label: "Collections",
+      value: stats.totalCollections,
+      icon: FolderOpen,
+      color: "text-emerald-500",
+    },
+    {
+      label: "Favorite Items",
+      value: stats.favoriteItems,
+      icon: Star,
+      color: "text-yellow-500",
+    },
+    {
+      label: "Favorite Collections",
+      value: stats.favoriteCollections,
+      icon: FolderHeart,
+      color: "text-pink-500",
+    },
+  ];
 
-export function StatsCards() {
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      {stats.map((stat) => (
+      {cards.map((stat) => (
         <Card key={stat.label} size="sm">
           <CardContent className="flex items-center gap-3">
-            <div className={`${stat.color}`}>
+            <div className={stat.color}>
               <stat.icon className="h-5 w-5" />
             </div>
             <div>
